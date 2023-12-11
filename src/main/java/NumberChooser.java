@@ -6,10 +6,17 @@ public class NumberChooser {
 
 
         Pattern integersPattern = Pattern.compile("([0-9]+)*");
-        Matcher matcher = integersPattern.matcher("12123123");
+        Matcher integers = integersPattern.matcher("12123123");
 
-        boolean matches = matcher.matches();
-        System.out.println("Czy pasuje do liczb całkowitych: " + matches);
+        boolean matchesIntegers = integers.matches();
+        System.out.println("Czy pasuje do liczb całkowitych: " + matchesIntegers);
+
+
+        Pattern floatsPattern = Pattern.compile("([0-9]+)*.([0-9]+)*");
+        Matcher floats = floatsPattern.matcher("244.008");
+
+        boolean matchesFloats = floats.matches();
+        System.out.println("Czy pasuje do liczb zmiennoprzecinkowych: " + matchesFloats);
 
     }
 }
