@@ -8,6 +8,7 @@ public class PeselValidator {
         boolean matches = matcher.matches();
         if (matches != true){
             System.out.println("Niepoprawny pesel");
+            return false;
         }
         return true;
     }
