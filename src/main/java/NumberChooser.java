@@ -1,24 +1,20 @@
+import java.util.LinkedList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class NumberChooser {
     public static void main(String[] args) {
+        String[] numbers = {"342", "5.34", "756","1.234e+07", "7.234243E-02", "6.09", "3457", "87", "1.0001", "3", "5"};
+        List <String> numbersList = List.of(numbers);
+        showAllIntegers(numbersList);
 
-
-        Pattern integersPattern = Pattern.compile("([0-9]+)*");
-        Matcher integers = integersPattern.matcher("12123123");
-        boolean matchesIntegers = integers.matches();
-        System.out.println("Czy pasuje do liczb całkowitych: " + matchesIntegers);
-
-
-        Pattern floatsPattern = Pattern.compile("([0-9]+)*.([0-9]+)*");
-        Matcher floats = floatsPattern.matcher("244.008");
-        boolean matchesFloats = floats.matches();
-        System.out.println("Czy pasuje do liczb zmiennoprzecinkowych: " + matchesFloats);
-
-        Pattern scientificNotationPattern = Pattern.compile("([0-9]+)*.([0-9]+)*(e|E)([+-])([0-9]+)*");
-        Matcher scientificNotation = scientificNotationPattern.matcher("1.234e+07");
-        boolean matchesScientificNotation = scientificNotation.matches();
-        System.out.println("Czy pasuje do notacji naukowej: " + matchesScientificNotation);
+    }
+    public static void showAllIntegers (List<String> text){
+        for (int i = 0; i <= text.size() - 1; i++){
+            if (text.get(i).matches("([0-9]+)*")){
+                System.out.println(text.get(i));
+            }
+        }
     }
 }
