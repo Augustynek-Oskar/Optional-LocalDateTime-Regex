@@ -2,11 +2,13 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class PeselValidator {
-    public static void main(String[] args) {
+    public boolean isPeselValid(String pesel){
         Pattern peselPattern = Pattern.compile("\\d{11}");
-        Matcher matcher = peselPattern.matcher("12345678911");
-
+        Matcher matcher = peselPattern.matcher(pesel);
         boolean matches = matcher.matches();
-        System.out.println(matches);
+        if (matches != true){
+            System.out.println("Niepoprawny pesel");
+        }
+        return true;
     }
 }
