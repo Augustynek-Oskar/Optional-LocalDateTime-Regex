@@ -3,12 +3,12 @@ import java.util.regex.Pattern;
 
 public class PasswordValidator {
     public static void main(String[] args) {
-        isPasswordValid("gowO");
+        isPasswordValid("2WWawW");
     }
     public static void isPasswordValid(String password){
-        Pattern passwordPattern = Pattern.compile("^(([a-z]*){7,})[A-Z]+$");
+        Pattern passwordPattern = Pattern.compile("[a-z]*([0-9]+[A-Z]+)");
         Matcher passwordMatcher = passwordPattern.matcher(password);
-        boolean matches = passwordMatcher.matches();
+        boolean matches = passwordMatcher.find();
         if (!matches){
             System.out.println("false");
         }
