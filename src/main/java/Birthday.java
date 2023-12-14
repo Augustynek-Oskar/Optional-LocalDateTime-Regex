@@ -7,7 +7,7 @@ import java.util.Calendar;
 import java.util.Locale;
 
 public class Birthday {
-    public static String getAge(String dateOfBirth){
+    public String getAge(String dateOfBirth){
         LocalDate localDateNow = LocalDate.now();
         LocalDate birthDate = LocalDate.parse(dateOfBirth);
         Period period = Period.between(birthDate, localDateNow);
@@ -15,20 +15,20 @@ public class Birthday {
         return String.valueOf(localDateNow.getYear() - birthDate.getYear());
     }
 
-    public static String getDayOfTheWeek(String dateOfBirth){
+    public String getDayOfTheWeek(String dateOfBirth){
         LocalDate birthDate = LocalDate.parse(dateOfBirth);
         System.out.println("You were born on: " + birthDate.getDayOfWeek());
         return String.valueOf(birthDate.getDayOfWeek());
     }
 
-    public static String getWeekOfTheYear(String dateOfBirth){
+    public String getWeekOfTheYear(String dateOfBirth){
         LocalDate birthDate = LocalDate.parse(dateOfBirth);
-        int weekOfTheYear = birthDate.get(WeekFields.of(Locale.GERMANY).weekOfYear());
+        int weekOfTheYear = birthDate.get(WeekFields.of(Locale.ENGLISH).weekOfYear());
         System.out.println("On the: " + weekOfTheYear + " week of the year!");
         return String.valueOf(weekOfTheYear);
     }
 
-    public static String getBrithdayInfo(String dateOfBirth){
+    public String getBrithdayInfo(String dateOfBirth){
         return getAge(dateOfBirth) + " " + getDayOfTheWeek(dateOfBirth) + " " + getWeekOfTheYear(dateOfBirth);
     }
 }
