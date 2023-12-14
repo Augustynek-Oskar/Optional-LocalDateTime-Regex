@@ -1,10 +1,12 @@
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.Month;
 import java.time.Period;
 
 public class Birthday {
     public static void main(String[] args) {
-        getAge("2001-06-17");
+
+        getDayOfTheWeek("2001-06-17");
     }
 
     public static int getAge(String dateOfBirth){
@@ -15,4 +17,15 @@ public class Birthday {
         return localDateNow.getYear() - birthDate.getYear();
     }
 
+    public static DayOfWeek getDayOfTheWeek(String dateOfBirth){
+        LocalDate birthDate = LocalDate.parse(dateOfBirth);
+        System.out.println(birthDate.getDayOfWeek());
+        return birthDate.getDayOfWeek();
+    }
+
+    public static void getWeekOfTheYear(String dateOfBirth){
+        LocalDate birthDate = LocalDate.parse(dateOfBirth);
+        birthDate.
+        System.out.println(birthDate.getDayOfWeek());
+    }
 }
