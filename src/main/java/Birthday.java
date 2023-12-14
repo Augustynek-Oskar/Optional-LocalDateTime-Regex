@@ -2,30 +2,33 @@ import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.Month;
 import java.time.Period;
+import java.time.temporal.WeekFields;
+import java.util.Calendar;
+import java.util.Locale;
 
 public class Birthday {
     public static void main(String[] args) {
 
-        getDayOfTheWeek("2001-06-17");
     }
 
-    public static int getAge(String dateOfBirth){
+    public static String getAge(String dateOfBirth){
         LocalDate localDateNow = LocalDate.now();
         LocalDate birthDate = LocalDate.parse(dateOfBirth);
         Period period = Period.between(birthDate, localDateNow);
         System.out.println(localDateNow.getYear() - birthDate.getYear());
-        return localDateNow.getYear() - birthDate.getYear();
+        return String.valueOf(localDateNow.getYear() - birthDate.getYear());
     }
 
-    public static DayOfWeek getDayOfTheWeek(String dateOfBirth){
+    public static String getDayOfTheWeek(String dateOfBirth){
         LocalDate birthDate = LocalDate.parse(dateOfBirth);
         System.out.println(birthDate.getDayOfWeek());
-        return birthDate.getDayOfWeek();
+        return String.valueOf(birthDate.getDayOfWeek());
     }
 
-    public static void getWeekOfTheYear(String dateOfBirth){
+    public static String getWeekOfTheYear(String dateOfBirth){
         LocalDate birthDate = LocalDate.parse(dateOfBirth);
-        birthDate.
-        System.out.println(birthDate.getDayOfWeek());
+        int weekOfTheYear = birthDate.get(WeekFields.of(Locale.GERMANY).weekOfYear());
+        System.out.println(weekOfTheYear);
+        return String.valueOf(weekOfTheYear);
     }
 }
