@@ -13,5 +13,7 @@ public class PhoneBook {
         }
         else throw new Exception("Nie znaleziono...");
     }
-
+    public PersonInfo getPersonInfo(String fullname){
+        return phoneBookMap.get(fullname);
+    }
 }
