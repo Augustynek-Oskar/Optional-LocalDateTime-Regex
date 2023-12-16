@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class BirthdayTest {
     Birthday birthday = new Birthday();
     @ParameterizedTest
-    @CsvSource (value = {"2000-05-25:23", "1998-10-12:25", "2010-01-01:13"}, delimiter = ':')
+    @CsvSource (value = {"2000/05/25:Invalid format. Try YYYY-MM-DD", "1998-10-12:25", "2010-01-01:13"}, delimiter = ':')
     void getAge(String input, String expected) {
         String actualValue = birthday.getAge(input);
         assertEquals(expected, actualValue);

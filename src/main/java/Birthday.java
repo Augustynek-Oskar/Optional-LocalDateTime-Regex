@@ -5,14 +5,19 @@ import java.time.Period;
 import java.time.temporal.WeekFields;
 import java.util.Calendar;
 import java.util.Locale;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Birthday {
     public String getAge(String dateOfBirth){
-        LocalDate localDateNow = LocalDate.now();
-        LocalDate birthDate = LocalDate.parse(dateOfBirth);
-        Period period = Period.between(birthDate, localDateNow);
-        System.out.println("You are: " + (localDateNow.getYear() - birthDate.getYear()) + " years old!");
-        return String.valueOf(localDateNow.getYear() - birthDate.getYear());
+        if (checkDatePattern(dateOfBirth)){
+            LocalDate localDateNow = LocalDate.now();
+            LocalDate birthDate = LocalDate.parse(dateOfBirth);
+            Period period = Period.between(birthDate, localDateNow);
+            System.out.println("You are: " + (localDateNow.getYear() - birthDate.getYear()) + " years old!");
+            return String.valueOf(localDateNow.getYear() - birthDate.getYear());
+        }
+       else return "Invalid format. Try YYYY-MM-DD";
     }
 
     public String getDayOfTheWeek(String dateOfBirth){
@@ -30,5 +35,10 @@ public class Birthday {
 
     public String getBrithdayInfo(String dateOfBirth){
         return getAge(dateOfBirth) + " " + getDayOfTheWeek(dateOfBirth) + " " + getWeekOfTheYear(dateOfBirth);
+    }
+    public static boolean checkDatePattern(String input){
+        Pattern pattern = Pattern.compile("\\d{4}-\\d{2}-\\d{2}");
+        Matcher matcher = pattern.matcher(input);
+        return matcher.matches();
     }
 }
