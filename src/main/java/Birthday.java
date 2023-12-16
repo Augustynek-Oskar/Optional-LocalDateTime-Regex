@@ -17,20 +17,26 @@ public class Birthday {
             System.out.println("You are: " + (localDateNow.getYear() - birthDate.getYear()) + " years old!");
             return String.valueOf(localDateNow.getYear() - birthDate.getYear());
         }
-       else return "Invalid format. Try YYYY-MM-DD";
+       else return "Incorrect format. Try YYYY-MM-DD";
     }
 
     public String getDayOfTheWeek(String dateOfBirth){
-        LocalDate birthDate = LocalDate.parse(dateOfBirth);
-        System.out.println("You were born on: " + birthDate.getDayOfWeek());
-        return String.valueOf(birthDate.getDayOfWeek());
+        if (checkDatePattern(dateOfBirth)){
+            LocalDate birthDate = LocalDate.parse(dateOfBirth);
+            System.out.println("You were born on: " + birthDate.getDayOfWeek());
+            return String.valueOf(birthDate.getDayOfWeek());
+        }
+        else return "Incorrect format. Try YYYY-MM-DD";
     }
 
     public String getWeekOfTheYear(String dateOfBirth){
-        LocalDate birthDate = LocalDate.parse(dateOfBirth);
-        int weekOfTheYear = birthDate.get(WeekFields.of(Locale.ENGLISH).weekOfYear());
-        System.out.println("On the: " + weekOfTheYear + " week of the year!");
-        return String.valueOf(weekOfTheYear);
+        if (checkDatePattern(dateOfBirth)){
+            LocalDate birthDate = LocalDate.parse(dateOfBirth);
+            int weekOfTheYear = birthDate.get(WeekFields.of(Locale.ENGLISH).weekOfYear());
+            System.out.println("On the: " + weekOfTheYear + " week of the year!");
+            return String.valueOf(weekOfTheYear);
+        }
+        else return "Incorrect format. Try YYYY-MM-DD";
     }
 
     public String getBrithdayInfo(String dateOfBirth){
