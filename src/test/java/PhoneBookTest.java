@@ -1,6 +1,8 @@
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.Map;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class PhoneBookTest {
@@ -12,6 +14,8 @@ class PhoneBookTest {
 
         String newlyAddedPerson = String.valueOf(phoneBook.getPersonInfo("Jan Kowalski"));
         assertEquals(" {Full name: Jan Kowalski, address: Ul. Nowa, phone number: 2342346343}", newlyAddedPerson);
+
+
     }
 
     @Test
@@ -27,11 +31,13 @@ class PhoneBookTest {
         catch (Exception e){
             System.out.println(e.getMessage());
         }
-
     }
 
     @Test
+    @DisplayName("Should check if file contains certain key")
     void phoneBookMapFromFile() {
-
+        PhoneBook phoneBook = new PhoneBook();
+        boolean actualValue = phoneBook.phoneBookMapFromFile().containsKey("Jan Kowalski");
+        assertTrue(actualValue);
     }
 }

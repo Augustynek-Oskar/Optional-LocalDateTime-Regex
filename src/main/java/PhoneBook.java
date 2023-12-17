@@ -61,7 +61,7 @@ public class PhoneBook {
         try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(CONTACTS_PATH))) {
 
             for (Map.Entry<String, PersonInfo> entry : phoneBookMap.entrySet()) {
-                bufferedWriter.write(entry.getKey() + ": " + entry.getValue().getAddress() + ": " + entry.getValue().getPhoneNumber());
+                bufferedWriter.write(entry.getKey() + ":" + entry.getValue().getAddress() + ":" + entry.getValue().getPhoneNumber());
                 bufferedWriter.newLine();
             }
         }
