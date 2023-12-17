@@ -37,11 +37,13 @@ public class PhoneBook {
     public void addPerson(String fullname, String address){
         PersonInfo personInfo = new PersonInfo(fullname, address);
         phoneBookMap.put(fullname, personInfo);
+        saveToFile();
     }
 
     public void addPerson(String fullname, String address, String phoneNum){
             PersonInfo personInfo = new PersonInfo(fullname, address, phoneNum);
             phoneBookMap.put(fullname, personInfo);
+            saveToFile();
     }
 
     public PersonInfo searchFor(String fullname) throws Exception {
@@ -55,5 +57,17 @@ public class PhoneBook {
         return phoneBookMap.get(fullname);
     }
 
-    public
+    public void saveToFile() {
+        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(CONTACTS_PATH))) {
+
+            for (Map.Entry<String, PersonInfo> entry : phoneBookMap.entrySet()) {
+                bufferedWriter.write(entry.getKey() + ": " + entry.getValue().getAddress() + ": " + entry.getValue().getPhoneNumber());
+                bufferedWriter.newLine();
+            }
+        }
+        catch (IOException e) {
+            throw new RuntimeException("Error while saving to file...");
+        }
+    }
+
 }
